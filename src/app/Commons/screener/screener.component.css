@@ -1,0 +1,11 @@
+.filter{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.dp{
+    width: 47%;
+    margin-right: 5px;
+    background-color: #ECFAF3;
+    display: inline-block;
+}

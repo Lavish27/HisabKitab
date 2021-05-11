@@ -1,0 +1,222 @@
+<div class="container" style="margin-top:50px">
+    <h2 style="font-family:cursive;color:cadetblue"><span class="glyphicon glyphicon-import"></span>New Purchase</h2>
+    <hr/>
+    <form class="form-horizontal" >
+      <div class="form-group col-sm-12">
+        <label class="control-label col-sm-2" for="name">Name of Seller:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+        </div>
+      </div>
+      <!--<div class="form-group col-sm-4">
+        <label class="control-label col-sm-6" for="state">State:</label>
+        <div class="col-sm-6">          
+          <input type="text" class="form-control" id="state" placeholder="Enter State" name="state">
+        </div>
+      </div>-->
+      <div class="form-group col-sm-12">
+        <label class="control-label col-sm-2" for="address">Address:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="address" placeholder="Enter address" name="address">
+        </div>
+      </div>
+      <!--<div class="form-group col-sm-4">
+        <label class="control-label col-sm-6" for="stateCode">State Code:</label>
+        <div class="col-sm-6">          
+          <input type="text" class="form-control" id="stateCode" placeholder="Enter State Code" name="stateCode">
+        </div>
+      </div>-->
+
+      <div class="form-group col-sm-4">
+        <label class="control-label col-sm-4" for="phone">Phone:</label>
+        <div class="col-sm-8">
+          <input type="number" class="form-control" id="phone" placeholder="Enter phone number" name="phone">
+        </div>
+      </div>
+      <!--<div class="form-group col-sm-4">
+        <label class="control-label col-sm-6" for="mode">Transport Mode:</label>
+        <div class="col-sm-6">          
+          <input type="text" class="form-control" id="mode" placeholder="Enter mode" name="mode">
+        </div>
+      </div>-->
+      <div class="form-group col-sm-4">
+        <label class="control-label col-sm-4" for="pan">GSTIN:</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" id="pan" placeholder="Enter GSTIN" name="pan">
+        </div>
+      </div>
+      <div class="form-group col-sm-4">
+        <label class="control-label col-sm-4" for="date">Date:</label>
+        <div class="col-sm-8">
+          <input type="date" class="form-control" id="date" [value] = "todaysDate" name="date">
+        </div>
+      </div>
+      <!--<div class="form-group col-sm-4">
+        <label class="control-label col-sm-6" for="vehicleNo">Vehicle No.:</label>
+        <div class="col-sm-6">          
+          <input type="text" class="form-control" id="vehicleNo" placeholder="Enter vehcle no." name="vehicleNo">
+        </div>
+      </div>-->
+
+
+      <button type="button" class="btn btn-info" style="margin:10px" data-toggle="collapse" data-target="#silver"
+      (click)="onClickSilver()">
+       <span data-toggle="collapse" data-target="#silver" *ngIf="silverToggleState ; else elseSilverBlock" class="glyphicon glyphicon-plus-sign"></span>
+       <ng-template #elseSilverBlock>
+       <span data-toggle="collapse" data-target="#silver" class="glyphicon glyphicon-minus-sign"></span>
+    </ng-template>
+        Silver</button>
+
+
+      <div id="silver" class="container collapse" style="background-color: silver;padding-top:10px">
+        
+        <div class="form-group col-sm-3">
+          <label class="control-label col-sm-6" for="hsn">HSN:</label>
+          <div class="col-sm-6">          
+            <input type="text" class="form-control" id="hsn"  name="hsn">
+          </div>
+        </div>
+        <div class="form-group col-sm-3">
+            <label class="control-label col-sm-6" for="sweight">Weight:</label>
+            <div class="col-sm-6">          
+              <input type="text" class="form-control" id="sweight" placeholder="in gms" name="sweight">
+            </div>
+          </div>
+          <div class="form-group col-sm-3">
+            <label class="control-label col-sm-6" for="srate">Rate:</label>
+            <div class="col-sm-6">          
+              <input type="text" class="form-control" id="srate" placeholder="per 10 gms" name="srate">
+            </div>
+          </div>
+          <div class="form-group col-sm-3">
+            <label class="control-label col-sm-6" for="samount">Amount:</label>
+            <div class="col-sm-6">          
+              <input type="text" class="form-control" id="samount" name="samount">
+            </div>
+          </div>
+      </div>
+
+
+      <button type="button" (click)="onClickGold()" class="btn btn-info" style="margin:10px" data-toggle="collapse" data-target="#gold">
+         <span data-toggle="collapse" data-target="#gold" *ngIf="goldToggleState ; else elseGoldBlock" class="glyphicon glyphicon-plus-sign"></span>
+       <ng-template #elseGoldBlock>
+       <span data-toggle="collapse" data-target="#gold" class="glyphicon glyphicon-minus-sign"></span>
+    </ng-template> 
+    Gold</button>
+      <br/>
+      <div id="gold" class="container collapse" style="background-color: gold;padding-top:10px;margin-bottom:10px;">
+        
+        <div class="form-group col-sm-3">
+          <label class="control-label col-sm-6" for="hsn">HSN:</label>
+          <div class="col-sm-6">          
+            <input type="text" class="form-control" id="hsn"  name="hsn">
+          </div>
+        </div>
+        <div class="form-group col-sm-3">
+            <label class="control-label col-sm-6" for="gweight">Weight:</label>
+            <div class="col-sm-6">          
+              <input type="text" class="form-control" id="gweight" placeholder="in gms" name="gweight">
+            </div>
+          </div>
+          <div class="form-group col-sm-3">
+            <label class="control-label col-sm-6" for="grate">Rate:</label>
+            <div class="col-sm-6">          
+              <input type="text" class="form-control" id="grate" placeholder="per 10 gms" name="grate">
+            </div>
+          </div>
+          <div class="form-group col-sm-3">
+            <label class="control-label col-sm-6" for="gamount">Amount:</label>
+            <div class="col-sm-6">          
+              <input type="text" class="form-control" id="gamount" name="gamount">
+            </div>
+          </div>
+      </div>
+
+
+      <div class="form-group col-sm-6">
+        <label class="control-label col-sm-6" for="discount">Discount:</label>
+        <div class="col-sm-6">          
+          <input type="text" class="form-control" id="discount" placeholder="Enter discount" name="discount">
+        </div>
+      </div>
+
+      <div class="form-group col-sm-6">
+        <label class="control-label col-sm-6" for="subtotal">Sub Total:</label>
+        <div class="col-sm-6">          
+          <input type="text" class="form-control" id="subtotal" name="subtotal">
+        </div>
+      </div>
+ 
+
+      <div class="form-group col-sm-6">
+        <label class="control-label col-sm-6" for="sgstrate">SGST Rate:</label>
+        <div class="col-sm-6">          
+          <input type="text" class="form-control" id="sgstrate" placeholder="Enter SGST rate" name="sgstrate">
+        </div>
+      </div>
+
+      <div class="form-group col-sm-6">
+        <label class="control-label col-sm-6" for="sgst">SGST:</label>
+        <div class="col-sm-6">          
+          <input type="text" class="form-control" id="sgst" name="sgst">
+        </div>
+      </div>
+
+      <div class="form-group col-sm-6">
+        <label class="control-label col-sm-6" for="cgstrate">CGST Rate:</label>
+        <div class="col-sm-6">          
+          <input type="text" class="form-control" id="cgstrate" placeholder="Enter CGST rate" name="cgstrate">
+        </div>
+      </div>
+
+      <div class="form-group col-sm-6">
+        <label class="control-label col-sm-6" for="cgst">CGST:</label>
+        <div class="col-sm-6">          
+          <input type="text" class="form-control" id="cgst" name="cgst">
+        </div>
+      </div>
+
+      <div class="form-group col-sm-6">
+        <label class="control-label col-sm-6" for="igstrate">IGST Rate:</label>
+        <div class="col-sm-6">          
+          <input type="text" class="form-control" id="igstrate" placeholder="Enter IGST rate" name="igstrate">
+        </div>
+      </div>
+
+      <div class="form-group col-sm-6">
+        <label class="control-label col-sm-6" for="igst">IGST:</label>
+        <div class="col-sm-6">          
+          <input type="text" class="form-control" id="igst" name="igst">
+        </div>
+      </div>
+
+      <div class="form-group col-sm-6">
+        <label class="control-label col-sm-6" for="gst">Total GST:</label>
+        <div class="col-sm-6">          
+          <input type="text" class="form-control" id="gst"  name="gst">
+        </div>
+      </div>
+
+      <div class="form-group col-sm-6">
+        <label class="control-label col-sm-6" for="gtotal">Grand Total:</label>
+        <div class="col-sm-6">          
+          <input type="text" class="form-control" id="gtotal" name="gtotal">
+        </div>
+      </div>
+
+      <div class="form-group col-sm-12">
+        <label class="control-label col-sm-2" for="gtotalw">Grand Total (in words):</label>
+        <div class="col-sm-10">          
+          <input type="text" class="form-control" id="gtotalw" name="gtotalw">
+        </div>
+      </div>
+
+      <div class="form-group" style="margin:10px">        
+        <div class="col-sm-offset-6 col-sm-10">
+          <button type="submit" class="btn btn-info">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+

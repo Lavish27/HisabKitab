@@ -1,0 +1,21 @@
+.positioning{
+    text-align: center;
+}
+
+.h1design{
+    font-family: fantasy;
+    color: rgb(170,60,40)
+}
+
+.pdesign{
+    font-family: cursive;
+    color: rgb(165, 100, 42)
+}
+
+.cpositioning{
+    margin-top: 50px;
+}
+
+.jdesign{
+    background-color: rgb(150, 180, 180); 
+}

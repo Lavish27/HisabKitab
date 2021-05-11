@@ -1,0 +1,22 @@
+<div class= "search-item-container">
+    <input type = "text" class="form-control custom-select-input" [(ngModel)]= "selectedItem" readonly
+    [placeholder]="selectPlaceHolder" (click)= "onClickSelectedInput()" />
+    <span class= "arrowContainer" (click)= "onClickSelectedInput()">
+    <i class= "iClass glyphicon" [ngClass]= "{'glyphicon-chevron-down': !dropDownOpen,
+     'glyphicon-chevron-up': dropDownOpen}">  </i></span> 
+     <div class= "searched-items-list" *ngIf= "dropDownOpen">
+        <div class= "search-input-container">
+            <input type= "text" class= "form-control custom-search-input" [(ngModel)]= "searchItem"
+            [placeholder]= "searchPlaceHolder" (ngModelChange)= "onSearch($event)"/>
+            <span class= "cross" (click)= "onReset()"> <i class= "glyphicon glyphicon-remove"> </i> </span>
+        </div>
+        <perfect-scrollbar>
+            <div class= "items-container">
+                <label class= "item" *ngFor= "let item of items">
+                   <input type="checkbox" [(ngModel)]= "item.isChecked" (ngModelChange)= "onSelectAction($event)"/> {{item.value}}
+                </label><br/>
+               
+            </div>
+        </perfect-scrollbar>
+     </div>
+</div>

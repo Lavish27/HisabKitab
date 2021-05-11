@@ -1,0 +1,399 @@
+<div class="container" style="margin-top:50px">
+    <h2 style="font-family:cursive;color:cadetblue"><span class="glyphicon glyphicon-export"></span>New Sale</h2>
+    <hr/>
+    <form class="form-horizontal" [formGroup]="saleForm" (ngSubmit) = "onSubmit()">
+      <div class="form-group col-sm-8">
+        <label class="control-label col-sm-4" for="name">Name of Customer:</label>
+        <div class="col-sm-8">
+          <input type="text" [class.is-invalid] = "saleForm.get('custName').invalid && 
+          saleForm.get('custName').touched" class="form-control" id="name" placeholder="Enter name" 
+          formControlName="custName" >
+          <small *ngIf="saleForm.get('custName').invalid && saleForm.get('custName').touched" class="text-danger">
+            This is a required field </small>
+        </div>
+      </div>
+      <div class="form-group col-sm-4">
+        <label class="control-label col-sm-6" for="state">State:</label>
+        <div class="col-sm-6">          
+          <input type="text" class="form-control" id="state" placeholder="Enter State" formControlName="state" >
+        </div>
+      </div>
+      <div class="form-group col-sm-8">
+        <label class="control-label col-sm-4" for="address">Address:</label>
+        <div class="col-sm-8">
+          <input type="text" [class.is-invalid] = "saleForm.get('custAddress').invalid && 
+          saleForm.get('custAddress').touched" class="form-control" id="address" placeholder="Enter address" 
+          formControlName="custAddress">
+          <small *ngIf="saleForm.get('custAddress').invalid && saleForm.get('custAddress').touched" class="text-danger">
+            This is a required field </small>
+        </div>
+      </div>
+      <div class="form-group col-sm-4">
+        <label class="control-label col-sm-6" for="stateCode">State Code:</label>
+        <div class="col-sm-6">          
+          <input type="text" class="form-control" id="stateCode" placeholder="Enter State Code" 
+          formControlName="stateCode" >
+         
+        </div>
+      </div>
+
+      <div class="form-group col-sm-8">
+        <label class="control-label col-sm-4" for="phone">Phone Number:</label>
+        <div class="col-sm-8">
+          <input type="number" [class.is-invalid] = "saleForm.get('phoneNo').invalid && 
+          saleForm.get('phoneNo').touched" class="form-control" id="phone" placeholder="Enter phone number" 
+          formControlName="phoneNo">
+          <small *ngIf="saleForm.get('phoneNo').invalid && saleForm.get('phoneNo').touched" class="text-danger">
+            This is a required field </small>
+        </div>
+      </div>
+      <div class="form-group col-sm-4">
+        <label class="control-label col-sm-6" for="mode">Transport Mode:</label>
+        <div class="col-sm-6">          
+          <input type="text" class="form-control" id="mode" placeholder="Enter mode"
+          formControlName="transportMode" >
+        </div>
+      </div>
+      <div class="form-group col-sm-8">
+        <label class="control-label col-sm-4" for="pan">GSTIN/Pan/Aadhar No.:</label>
+        <div class="col-sm-8">
+          <input type="text" [class.is-invalid] = "saleForm.get('aadhar').invalid && 
+          saleForm.get('aadhar').touched" class="form-control" id="pan" placeholder="Enter GST/Pan/Aadhar No." 
+          formControlName="aadhar" >
+          <small *ngIf="saleForm.get('aadhar').invalid && saleForm.get('aadhar').touched" class="text-danger">
+            This is a required field </small>
+        </div>
+      </div>
+      <div class="form-group col-sm-4">
+        <label class="control-label col-sm-6" for="vehicleNo">Vehicle No.:</label>
+        <div class="col-sm-6">          
+          <input type="text" class="form-control" id="vehicleNo" placeholder="Enter vehcle no." 
+          formControlName="vehicleNo" >
+        </div>
+      </div>
+
+
+      <button type="button" class="btn btn-info" style="margin:10px" data-toggle="collapse" data-target="#silver"
+      (click)="onClickSilver()">
+       <span data-toggle="collapse" data-target="#silver" *ngIf="silverToggleState ; else elseSilverBlock" class="glyphicon glyphicon-plus-sign"></span>
+       <ng-template #elseSilverBlock>
+       <span data-toggle="collapse" data-target="#silver" class="glyphicon glyphicon-minus-sign"></span>
+    </ng-template>
+        Silver</button>
+
+
+      <div id="silver" class="container collapse" style="background-color: silver;padding-top:10px">
+        <div class="form-group col-sm-3">
+          <label class="control-label col-sm-6" for="hsn">HSN:</label>
+          <div class="col-sm-6">          
+            <input type="text" class="form-control" id="hsn"  formControlName="sHsn" >
+          </div>
+        </div>
+        <div class="form-group col-sm-3">
+            <label class="control-label col-sm-6" for="sweight">Weight:</label>
+            <div class="col-sm-6">          
+              <input type="text" [class.is-invalid] = "saleForm.get('s_wt').invalid && 
+              saleForm.get('s_wt').touched" class="form-control" id="sweight" placeholder="in gms"
+              formControlName="s_wt">
+              <div *ngIf = "saleForm.get('s_wt').errors && (saleForm.get('s_wt').invalid && saleForm.get('s_wt').touched)"> 
+                <small class="text-danger" *ngIf = "saleForm.get('s_wt').errors.required">
+                  This is a required field
+                </small>
+                <small class="text-danger" *ngIf = "saleForm.get('s_wt').errors.pattern">
+                  Invalid Value
+                </small>  
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-sm-3">
+            <label class="control-label col-sm-6" for="srate">Rate:</label>
+            <div class="col-sm-6">          
+              <input type="text" [class.is-invalid] = "saleForm.get('s_rt').invalid && 
+              saleForm.get('s_rt').touched" class="form-control" id="srate" placeholder="per 10 gms"
+              formControlName="s_rt" >
+              <div *ngIf = "saleForm.get('s_rt').errors && (saleForm.get('s_rt').invalid && saleForm.get('s_rt').touched)"> 
+                <small class="text-danger" *ngIf = "saleForm.get('s_rt').errors.required">
+                  This is a required field
+                </small>
+                <small class="text-danger" *ngIf = "saleForm.get('s_rt').errors.pattern">
+                  Invalid Value
+                </small>  
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-sm-3">
+            <label class="control-label col-sm-6" for="samount">Amount:</label>
+            <div class="col-sm-6">          
+              <input type="text" [class.is-invalid] = "saleForm.get('sAmount').invalid && 
+              saleForm.get('sAmount').touched" class="form-control" id="samount" formControlName="sAmount" >
+            </div>
+            <div *ngIf = "saleForm.get('sAmount').errors && (saleForm.get('sAmount').invalid && saleForm.get('sAmount').touched)"> 
+              <small class="text-danger" *ngIf = "saleForm.get('sAmount').errors.required">
+                This is a required field
+              </small>
+              <small class="text-danger" *ngIf = "saleForm.get('sAmount').errors.pattern">
+                Invalid Value
+              </small>  
+            </div>
+          </div>
+      </div>
+
+
+      <button type="button" (click)="onClickGold()" class="btn btn-info" style="margin:10px" data-toggle="collapse" data-target="#gold">
+         <span data-toggle="collapse" data-target="#gold" *ngIf="goldToggleState ; else elseGoldBlock" class="glyphicon glyphicon-plus-sign"></span>
+       <ng-template #elseGoldBlock>
+       <span data-toggle="collapse" data-target="#gold" class="glyphicon glyphicon-minus-sign"></span>
+    </ng-template> 
+    Gold</button>
+      <br/>
+      <div id="gold" class="container collapse" style="background-color: gold;padding-top:10px;margin-bottom:10px;">
+        <div class="form-group col-sm-3">
+          <label class="control-label col-sm-6" for="hsn">HSN:</label>
+          <div class="col-sm-6">          
+            <input type="text" class="form-control" id="hsn"  formControlName="gHsn" >
+          </div>
+        </div>
+        <div class="form-group col-sm-3">
+            <label class="control-label col-sm-6" for="gweight">Weight:</label>
+            <div class="col-sm-6">          
+              <input type="text" [class.is-invalid] = "saleForm.get('g_wt').invalid && 
+              saleForm.get('g_wt').touched" class="form-control" id="gweight" placeholder="in gms" 
+              formControlName="g_wt"> 
+              <div *ngIf = "saleForm.get('g_wt').errors && (saleForm.get('g_wt').invalid && saleForm.get('g_wt').touched)"> 
+                <small class="text-danger" *ngIf = "saleForm.get('g_wt').errors.required">
+                  This is a required field
+                </small>
+                <small class="text-danger" *ngIf = "saleForm.get('g_wt').errors.pattern">
+                  Invalid Value
+                </small>  
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group col-sm-3">
+            <label class="control-label col-sm-6" for="grate">Rate:</label>
+            <div class="col-sm-6">          
+              <input type="text" [class.is-invalid] = "saleForm.get('g_rt').invalid && 
+              saleForm.get('g_rt').touched" class="form-control" id="grate" placeholder="per 10 gms" 
+              formControlName="g_rt"> 
+              <div *ngIf = "saleForm.get('g_rt').errors && (saleForm.get('g_rt').invalid && saleForm.get('g_rt').touched)"> 
+                <small class="text-danger" *ngIf = "saleForm.get('g_rt').errors.required">
+                  This is a required field
+                </small>
+                <small class="text-danger" *ngIf = "saleForm.get('g_rt').errors.pattern">
+                  Invalid Value
+                </small>  
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-sm-3">
+            <label class="control-label col-sm-6" for="gamount">Amount:</label>
+            <div class="col-sm-6">          
+              <input type="text" [class.is-invalid] = "saleForm.get('gAmount').invalid && 
+              saleForm.get('gAmount').touched" class="form-control" id="gamount" formControlName="gAmount" >
+              <div *ngIf = "saleForm.get('gAmount').errors && (saleForm.get('gAmount').invalid && saleForm.get('gAmount').touched)"> 
+                <small class="text-danger" *ngIf = "saleForm.get('gAmount').errors.required">
+                  This is a required field
+                </small>
+                <small class="text-danger" *ngIf = "saleForm.get('gAmount').errors.pattern">
+                  Invalid Value
+                </small>  
+              </div>
+            </div>
+          </div>
+      </div>
+
+
+      <div class="form-group col-sm-6">
+        <label class="control-label col-sm-6" for="date">Date:</label>
+        <div class="col-sm-6">
+          <input type="date" [class.is-invalid] = "saleForm.get('date').invalid && 
+          saleForm.get('date').touched" class="form-control" id="date" formControlName="date">
+          <small *ngIf="saleForm.get('date').invalid && saleForm.get('date').touched" class="text-danger">
+            This is a required field </small>
+        </div>
+      </div>
+
+      <div class="form-group col-sm-6">
+        <label class="control-label col-sm-6" for="subtotal">Sub Total:</label>
+        <div class="col-sm-6">          
+          <input type="text" [class.is-invalid] = "saleForm.get('subTotal').invalid && 
+          saleForm.get('subTotal').touched" class="form-control" id="subtotal" formControlName="subTotal" >
+          <div *ngIf = "saleForm.get('subTotal').errors && (saleForm.get('subTotal').invalid && saleForm.get('subTotal').touched)"> 
+            <small class="text-danger" *ngIf = "saleForm.get('subTotal').errors.required">
+              This is a required field
+            </small>
+            <small class="text-danger" *ngIf = "saleForm.get('subTotal').errors.pattern">
+              Invalid Value
+            </small>  
+          </div>
+        </div>
+      </div>
+ 
+
+      <div class="form-group col-sm-6">
+        <label class="control-label col-sm-6" for="sgstrate">SGST Rate:</label>
+        <div class="col-sm-6">          
+          <input type="text" [class.is-invalid] = "saleForm.get('sgstRate').invalid && 
+          saleForm.get('sgstRate').touched" class="form-control" id="sgstrate" placeholder="Enter SGST rate" 
+          formControlName="sgstRate" >
+          <div *ngIf = "saleForm.get('sgstRate').errors && (saleForm.get('sgstRate').invalid && saleForm.get('sgstRate').touched)"> 
+            <small class="text-danger" *ngIf = "saleForm.get('sgstRate').errors.required">
+              This is a required field
+            </small>
+            <small class="text-danger" *ngIf = "saleForm.get('sgstRate').errors.pattern">
+              Invalid Value
+            </small>  
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group col-sm-6">
+        <label class="control-label col-sm-6" for="sgst">SGST:</label>
+        <div class="col-sm-6">          
+          <input type="text" [class.is-invalid] = "saleForm.get('sgst').invalid && 
+          saleForm.get('sgst').touched" class="form-control" id="sgst" formControlName="sgst" >
+          <div *ngIf = "saleForm.get('sgst').errors && (saleForm.get('sgst').invalid && saleForm.get('sgst').touched)"> 
+            <small class="text-danger" *ngIf = "saleForm.get('sgst').errors.required">
+              This is a required field
+            </small>
+            <small class="text-danger" *ngIf = "saleForm.get('sgst').errors.pattern">
+              Invalid Value
+            </small>  
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group col-sm-6">
+        <label class="control-label col-sm-6" for="cgstrate">CGST Rate:</label>
+        <div class="col-sm-6">          
+          <input type="text" [class.is-invalid] = "saleForm.get('cgstRate').invalid && 
+          saleForm.get('cgstRate').touched" class="form-control" id="cgstrate" placeholder="Enter CGST rate" 
+          formControlName="cgstRate" >
+          <div *ngIf = "saleForm.get('cgstRate').errors && (saleForm.get('cgstRate').invalid && saleForm.get('cgstRate').touched)"> 
+            <small class="text-danger" *ngIf = "saleForm.get('cgstRate').errors.required">
+              This is a required field
+            </small>
+            <small class="text-danger" *ngIf = "saleForm.get('cgstRate').errors.pattern">
+              Invalid Value
+            </small>  
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group col-sm-6">
+        <label class="control-label col-sm-6" for="cgst">CGST:</label>
+        <div class="col-sm-6">          
+          <input type="text" [class.is-invalid] = "saleForm.get('cgst').invalid && 
+          saleForm.get('cgst').touched" class="form-control" id="cgst" formControlName="cgst" >
+          <div *ngIf = "saleForm.get('cgst').errors && (saleForm.get('cgst').invalid && saleForm.get('cgst').touched)"> 
+            <small class="text-danger" *ngIf = "saleForm.get('cgst').errors.required">
+              This is a required field
+            </small>
+            <small class="text-danger" *ngIf = "saleForm.get('cgst').errors.pattern">
+              Invalid Value
+            </small>  
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group col-sm-6">
+        <label class="control-label col-sm-6" for="igstrate">IGST Rate:</label>
+        <div class="col-sm-6">          
+          <input type="text" [class.is-invalid] = "saleForm.get('igstRate').invalid && 
+          saleForm.get('igstRate').touched" class="form-control" id="igstrate" placeholder="Enter IGST rate" 
+          formControlName="igstRate" >
+          <div *ngIf = "saleForm.get('igstRate').errors && (saleForm.get('igstRate').invalid && saleForm.get('igstRate').touched)"> 
+            <small class="text-danger" *ngIf = "saleForm.get('igstRate').errors.required">
+              This is a required field
+            </small>
+            <small class="text-danger" *ngIf = "saleForm.get('igstRate').errors.pattern">
+              Invalid Value
+            </small>  
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group col-sm-6">
+        <label class="control-label col-sm-6" for="igst">IGST:</label>
+        <div class="col-sm-6">          
+          <input type="text" [class.is-invalid] = "saleForm.get('igst').invalid && 
+          saleForm.get('igst').touched" class="form-control" id="igst" formControlName="igst" >
+          <div *ngIf = "saleForm.get('igst').errors && (saleForm.get('igst').invalid && saleForm.get('igst').touched)"> 
+            <small class="text-danger" *ngIf = "saleForm.get('igst').errors.required">
+              This is a required field
+            </small>
+            <small class="text-danger" *ngIf = "saleForm.get('igst').errors.pattern">
+              Invalid Value
+            </small>  
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group col-sm-6">
+        <label class="control-label col-sm-6" for="gst">Total GST:</label>
+        <div class="col-sm-6">          
+          <input type="text" [class.is-invalid] = "saleForm.get('totalGst').invalid && 
+          saleForm.get('totalGst').touched" class="form-control" id="gst"  formControlName="totalGst" >
+          <div *ngIf = "saleForm.get('totalGst').errors && (saleForm.get('totalGst').invalid && saleForm.get('totalGst').touched)"> 
+            <small class="text-danger" *ngIf = "saleForm.get('totalGst').errors.required">
+              This is a required field
+            </small>
+            <small class="text-danger" *ngIf = "saleForm.get('totalGst').errors.pattern">
+              Invalid Value
+            </small>  
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group col-sm-6">
+        <label class="control-label col-sm-6" for="gtotal">Grand Total:</label>
+        <div class="col-sm-6">          
+          <input type="text" [class.is-invalid] = "saleForm.get('grandTotal').invalid && 
+          saleForm.get('grandTotal').touched" class="form-control" id="gtotal" formControlName="grandTotal" >
+          <div *ngIf = "saleForm.get('grandTotal').errors && (saleForm.get('grandTotal').invalid && saleForm.get('grandTotal').touched)"> 
+            <small class="text-danger" *ngIf = "saleForm.get('grandTotal').errors.required">
+              This is a required field
+            </small>
+            <small class="text-danger" *ngIf = "saleForm.get('grandTotal').errors.pattern">
+              Invalid Value
+            </small>  
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group col-sm-6">
+        <label class="control-label col-sm-6" for="gtotal">Round Off:</label>
+        <div class="col-sm-6">          
+          <input type="text" [class.is-invalid] = "saleForm.get('roundOff').invalid && 
+          saleForm.get('roundOff').touched" class="form-control" id="gtotal" formControlName="roundOff" >
+          <div *ngIf = "saleForm.get('roundOff').errors && (saleForm.get('roundOff').invalid && saleForm.get('roundOff').touched)"> 
+            <small class="text-danger" *ngIf = "saleForm.get('roundOff').errors.required">
+              This is a required field
+            </small>
+            <small class="text-danger" *ngIf = "saleForm.get('roundOff').errors.pattern">
+              Invalid Value
+            </small>  
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group col-sm-12">
+        <label class="control-label col-sm-2" for="gtotalw">Grand Total (in words):</label>
+        <div class="col-sm-10">          
+          <input type="text" [class.is-invalid] = "saleForm.get('grandTotalWords').invalid && 
+          saleForm.get('grandTotalWords').touched" class="form-control" id="gtotalw" formControlName="grandTotalWords">
+          <small *ngIf="saleForm.get('grandTotalWords').invalid && saleForm.get('grandTotalWords').touched" class="text-danger">
+            This is a required field </small>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin:10px">        
+        <div class="col-sm-offset-6 col-sm-10">
+          <button type="submit" [disabled] = "saleForm.invalid || submitDisabled" class="btn btn-info">Submit</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+  

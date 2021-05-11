@@ -1,0 +1,134 @@
+
+<div style="text-align: right; margin-top: 60px;">
+    <button type="submit" class="btn btn-info" 
+    printSectionId="print-area" printTitle= "Tax Invoice" [useExistingCss]="true" ngxPrint>Print
+    </button>
+    <button type= "submit" class="btn btn-info" style= "margin-left: 20px;" (click)="cancelEvent()">
+        Cancel</button>
+  </div>
+  <div id= "print-area" style = "margin-top:10px;">
+<table style="width:100%;">
+    <tr>
+    <td colspan = "4" rowspan = "2" >
+   <h3> <b>{{clientDetails.clientName}} </b></h3>
+   <p>{{clientDetails.address}} <br/>
+   GSTIN : {{clientDetails.gstin}} <br/> 
+    State Name : Uttar Pradesh , Code : 09 <br/>
+     Contact : {{clientDetails.phone}}<br/>
+    E-Mail : ------</p>
+    </td>
+    <td colspan = "2">
+    <p>Invoice No. </p>
+     <b>{{invoiceNo}}</b>
+    
+    </td>
+    </tr>
+    
+    <tr>
+    <td colspan = "2">
+    <p>Dated</p>
+    <b>{{saleBillData.date}}</b>
+    </td>
+    </tr>
+    
+    <tr>
+    <td colspan = "4" rowspan = "2">
+    <p>Buyer</p>
+    <h4><b>{{saleBillData.custName}}</b></h4>
+    <p>{{saleBillData.custAddress}}<br/>
+    GSTIN/PAN/Aadhar No. : {{saleBillData.aadhar}}<br/>
+    State Name : {{saleBillData.state}} <br/>
+    Code : {{saleBillData.stateCode}}</p>
+    </td>
+    <td colspan = "2">
+    <p>Transport Mode</p>
+    <p>{{saleBillData.transportMode}}</p>
+    </td>
+    </tr>
+    
+    <tr>
+    <td colspan = "2">
+    <p>Vehicle no.</p>
+    <p>{{saleBillData.vehicleNo}}</p>
+    </td>
+    </tr>
+    <tr style= "text-align: center;">
+        <td>Sl No.</td>
+        <td>Particulars</td>
+        <td>HSN</td>
+        <td>Weight (gms)</td>
+        <td>Rate (per 10 gms)</td>
+        <td>Amount</td>
+      </tr>
+      
+     <tr *ngIf= "saleBillData.s_wt != 0">
+        <td><b>1</b></td>
+        <td><b>Silver Ornaments</b></td>
+        <td><b>{{saleBillData.sHsn}}</b></td>
+        <td><b>{{saleBillData.s_wt}}</b></td>
+        <td><b>{{saleBillData.s_rt}}</b></td>
+        <td><b>{{saleBillData.sAmount}}</b></td>
+     </tr>
+
+     <tr *ngIf= "saleBillData.g_wt != 0">
+        <td *ngIf= "saleBillData.s_wt == 0 ; else elseBlock"><b>1</b></td>
+        <ng-template #elseBlock>
+            <td><b>2</b></td>
+        </ng-template>
+        <td><b>Gold Ornaments</b></td>
+        <td><b>{{saleBillData.gHsn}}</b></td>
+        <td><b>{{saleBillData.g_wt}}</b></td>
+        <td><b>{{saleBillData.g_rt}}</b></td>
+        <td><b>{{saleBillData.gAmount}}</b></td>
+        </tr>
+     
+     
+     <tr>
+     <td colspan= "2" rowspan = "3">
+        <p> Total Amount In Words : </p>
+        <b>{{saleBillData.grandTotalWords}}</b>
+        </td>
+        <td colspan= "2">Sub Total</td>
+        <td colspan= "2">{{saleBillData.subTotal}}</td>
+     </tr>
+     
+      <tr>
+        <td colspan= "2">SGST ({{saleBillData.sgstRate}}%)</td>
+        <td colspan= "2">{{saleBillData.sgst}}</td>
+     </tr>
+     <tr>
+        <td colspan= "2">CGST ({{saleBillData.cgstRate}}%)</td>
+        <td colspan= "2">{{saleBillData.cgst}}</td>
+     </tr>
+     <tr>
+        <td colspan= "2" rowspan = "3">
+           <p>Bank Name : {{clientDetails.bankName}}<br/>
+           Branch : {{clientDetails.bankBranch}}<br/>
+           IFSC : {{clientDetails.bankIFSC}}<br/>
+           Acc No. : {{clientDetails.bankAccNo}}</p>
+        </td>
+
+        <td colspan= "2">IGST ({{saleBillData.igstRate}}%)</td>
+        <td colspan= "2">{{saleBillData.igst}}</td>
+     </tr>
+     
+     <tr>
+        <td colspan= "2">Grand Total </td>
+        <td colspan= "2"><b>&#8377; {{saleBillData.grandTotal}}</b></td>
+     </tr>
+     
+     <tr>
+        <td colspan= "2">Grand Total (Round Off)</td>
+        <td colspan= "2"><b>&#8377; {{saleBillData.roundOff}}</b></td>
+     </tr>
+     <tr>
+        <td colspan= "3"></td>
+        <td colspan= "3">
+            <p style= "text-align: right;"><b>for {{clientDetails.clientName}}</b><br/><br/><br/><br/>
+            Authorized Signatory
+        </p>
+        </td>
+     </tr>
+      </table>
+    </div>
+      

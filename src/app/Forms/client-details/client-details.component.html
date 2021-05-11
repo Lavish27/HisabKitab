@@ -1,0 +1,181 @@
+
+<form class="form-horizontal" [formGroup]="clientDetailsForm" (ngSubmit) = "onSubmit()">
+    <div *ngIf= "modalName == 'hsn'" class="form-group col-sm-12">
+        <label class="control-label col-sm-4" for="ghsn">Gold HSN:</label>
+        <div class="col-sm-8">
+          <input type="text" [class.is-invalid] = "clientDetailsForm.get('ghsn').invalid && 
+          clientDetailsForm.get('ghsn').touched" class="form-control" id="ghsn" placeholder="Enter Gold HSN" 
+          formControlName="ghsn" >
+          <small *ngIf="clientDetailsForm.get('ghsn').invalid && clientDetailsForm.get('ghsn').touched" class="text-danger">
+            This is a required field </small>
+        </div>
+      </div>
+
+      <div *ngIf= "modalName == 'hsn'" class="form-group col-sm-12">
+        <label class="control-label col-sm-4" for="shsn">Silver HSN:</label>
+        <div class="col-sm-8">
+          <input type="text" [class.is-invalid] = "clientDetailsForm.get('shsn').invalid && 
+          clientDetailsForm.get('shsn').touched" class="form-control" id="shsn" placeholder="Enter Silver HSN" 
+          formControlName="shsn" >
+          <small *ngIf="clientDetailsForm.get('shsn').invalid && clientDetailsForm.get('shsn').touched" class="text-danger">
+            This is a required field </small>
+        </div>
+      </div>
+
+      <div *ngIf= "modalName == 'gst'" class="form-group col-sm-12">
+        <label class="control-label col-sm-4" for="sgst">SGST Rate:</label>
+        <div class="col-sm-8">
+          <input type="text" [class.is-invalid] = "clientDetailsForm.get('sgst').invalid && 
+          clientDetailsForm.get('sgst').touched" class="form-control" id="sgst" placeholder="Enter SGST Rate" 
+          formControlName="sgst" >
+          <div *ngIf = "clientDetailsForm.get('sgst').errors && (clientDetailsForm.get('sgst').invalid && clientDetailsForm.get('sgst').touched)"> 
+            <small class="text-danger" *ngIf = "clientDetailsForm.get('sgst').errors.required">
+              This is a required field
+            </small>
+            <small class="text-danger" *ngIf = "clientDetailsForm.get('sgst').errors.pattern">
+              Invalid Value
+            </small>  
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf= "modalName == 'gst'" class="form-group col-sm-12">
+        <label class="control-label col-sm-4" for="cgst">CGST Rate:</label>
+        <div class="col-sm-8">
+          <input type="text" [class.is-invalid] = "clientDetailsForm.get('cgst').invalid && 
+          clientDetailsForm.get('cgst').touched" class="form-control" id="cgst" placeholder="Enter CGST Rate" 
+          formControlName="cgst" >
+          <div *ngIf = "clientDetailsForm.get('cgst').errors && (clientDetailsForm.get('cgst').invalid && clientDetailsForm.get('cgst').touched)"> 
+            <small class="text-danger" *ngIf = "clientDetailsForm.get('cgst').errors.required">
+              This is a required field
+            </small>
+            <small class="text-danger" *ngIf = "clientDetailsForm.get('cgst').errors.pattern">
+              Invalid Value
+            </small>  
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf= "modalName == 'gst'" class="form-group col-sm-12">
+        <label class="control-label col-sm-4" for="igst">IGST Rate:</label>
+        <div class="col-sm-8">
+          <input type="text" [class.is-invalid] = "clientDetailsForm.get('igst').invalid && 
+          clientDetailsForm.get('igst').touched" class="form-control" id="igst" placeholder="Enter IGST Rate" 
+          formControlName="igst" >
+          <div *ngIf = "clientDetailsForm.get('igst').errors && (clientDetailsForm.get('igst').invalid && clientDetailsForm.get('igst').touched)"> 
+            <small class="text-danger" *ngIf = "clientDetailsForm.get('igst').errors.required">
+              This is a required field
+            </small>
+            <small class="text-danger" *ngIf = "clientDetailsForm.get('igst').errors.pattern">
+              Invalid Value
+            </small>  
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf= "modalName == 'personal'" class="form-group col-sm-12">
+        <label class="control-label col-sm-4" for="name">Name:</label>
+        <div class="col-sm-8">
+          <input type="text" [class.is-invalid] = "clientDetailsForm.get('clientName').invalid && 
+          clientDetailsForm.get('clientName').touched" class="form-control" id="name" placeholder="Enter Name" 
+          formControlName="clientName" >
+          <small *ngIf="clientDetailsForm.get('clientName').invalid && clientDetailsForm.get('clientName').touched" class="text-danger">
+            This is a required field </small>
+        </div>
+      </div>
+
+      <div *ngIf= "modalName == 'personal'" class="form-group col-sm-12">
+        <label class="control-label col-sm-4" for="desc">Description:</label>
+        <div class="col-sm-8">
+          <input type="text" [class.is-invalid] = "clientDetailsForm.get('description').invalid && 
+          clientDetailsForm.get('description').touched" class="form-control" id="desc" placeholder="Enter Description" 
+          formControlName="description" >
+          <small *ngIf="clientDetailsForm.get('description').invalid && clientDetailsForm.get('description').touched" class="text-danger">
+            This is a required field </small>
+        </div>
+      </div>
+
+      <div *ngIf= "modalName == 'personal'" class="form-group col-sm-12">
+        <label class="control-label col-sm-4" for="address">Address:</label>
+        <div class="col-sm-8">
+          <input type="text" [class.is-invalid] = "clientDetailsForm.get('address').invalid && 
+          clientDetailsForm.get('address').touched" class="form-control" id="address" placeholder="Enter Address" 
+          formControlName="address" >
+          <small *ngIf="clientDetailsForm.get('address').invalid && clientDetailsForm.get('address').touched" class="text-danger">
+            This is a required field </small>
+        </div>
+      </div>
+
+      <div *ngIf= "modalName == 'personal'" class="form-group col-sm-12">
+        <label class="control-label col-sm-4" for="gstin">GSTIN:</label>
+        <div class="col-sm-8">
+          <input type="text" [class.is-invalid] = "clientDetailsForm.get('gstin').invalid && 
+          clientDetailsForm.get('gstin').touched" class="form-control" id="gstin" placeholder="Enter GSTIN" 
+          formControlName="gstin" >
+          <small *ngIf="clientDetailsForm.get('gstin').invalid && clientDetailsForm.get('gstin').touched" class="text-danger">
+            This is a required field </small>
+        </div>
+      </div>
+
+      <div *ngIf= "modalName == 'personal'" class="form-group col-sm-12">
+        <label class="control-label col-sm-4" for="phone">Phone:</label>
+        <div class="col-sm-8">
+          <input type="text" [class.is-invalid] = "clientDetailsForm.get('phone').invalid && 
+          clientDetailsForm.get('phone').touched" class="form-control" id="phone" placeholder="Enter Phone" 
+          formControlName="phone" >
+          <small *ngIf="clientDetailsForm.get('phone').invalid && clientDetailsForm.get('phone').touched" class="text-danger">
+            This is a required field </small>
+        </div>
+      </div>
+
+      <div *ngIf= "modalName == 'personal'" class="form-group col-sm-12">
+        <label class="control-label col-sm-4" for="bname">Bank Name:</label>
+        <div class="col-sm-8">
+          <input type="text" [class.is-invalid] = "clientDetailsForm.get('bankName').invalid && 
+          clientDetailsForm.get('bankName').touched" class="form-control" id="bname" placeholder="Enter Bank Name" 
+          formControlName="bankName" >
+          <small *ngIf="clientDetailsForm.get('bankName').invalid && clientDetailsForm.get('bankName').touched" class="text-danger">
+            This is a required field </small>
+        </div>
+      </div>
+
+      <div *ngIf= "modalName == 'personal'" class="form-group col-sm-12">
+        <label class="control-label col-sm-4" for="branch">Bank Branch:</label>
+        <div class="col-sm-8">
+          <input type="text" [class.is-invalid] = "clientDetailsForm.get('bankBranch').invalid && 
+          clientDetailsForm.get('bankBranch').touched" class="form-control" id="branch" placeholder="Enter Bank Branch" 
+          formControlName="bankBranch" >
+          <small *ngIf="clientDetailsForm.get('bankBranch').invalid && clientDetailsForm.get('bankBranch').touched" class="text-danger">
+            This is a required field </small>
+        </div>
+      </div>
+
+      <div *ngIf= "modalName == 'personal'" class="form-group col-sm-12">
+        <label class="control-label col-sm-4" for="acc">Bank Account No.:</label>
+        <div class="col-sm-8">
+          <input type="text" [class.is-invalid] = "clientDetailsForm.get('bankAccNo').invalid && 
+          clientDetailsForm.get('bankAccNo').touched" class="form-control" id="acc" placeholder="Enter Bank Account No." 
+          formControlName="bankAccNo" >
+          <small *ngIf="clientDetailsForm.get('bankAccNo').invalid && clientDetailsForm.get('bankAccNo').touched" class="text-danger">
+            This is a required field </small>
+        </div>
+      </div>
+
+      <div *ngIf= "modalName == 'personal'" class="form-group col-sm-12">
+        <label class="control-label col-sm-4" for="ifsc">Bank IFSC:</label>
+        <div class="col-sm-8">
+          <input type="text" [class.is-invalid] = "clientDetailsForm.get('bankIFSC').invalid && 
+          clientDetailsForm.get('bankIFSC').touched" class="form-control" id="ifsc" placeholder="Enter Bank IFSC" 
+          formControlName="bankIFSC" >
+          <small *ngIf="clientDetailsForm.get('bankIFSC').invalid && clientDetailsForm.get('bankIFSC').touched" class="text-danger">
+            This is a required field </small>
+        </div>
+      </div>
+      <div class="form-group" style="margin:10px">        
+        <div class="col-sm-offset-6 col-sm-10">
+          <button type="submit" [disabled] = "clientDetailsForm.invalid || submitDisabled" class="btn btn-info">Submit</button>
+        </div>
+      </div>
+
+</form>
+

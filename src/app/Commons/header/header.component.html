@@ -1,0 +1,86 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" routerLink="hem-jewellers" style="color:rgb(200, 120, 40)">{{clientDetails.clientName}}</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a routerLink="hem-jewellers">Home</a></li>
+          <li><a routerLink="/hem-jewellers/new-sale">New Sale</a></li>
+          <li><a routerLink="/hem-jewellers/sale-history">Sale History</a></li>
+          <li><a routerLink="/hem-jewellers/new-purchase">New Purchase</a></li>
+          <li><a routerLink="/hem-jewellers/purchase-history">Purchase History</a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Options
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu bg-grey">
+              <li><a href="#" data-toggle="modal" data-target="#modalHSN">Update HSN</a></li>
+              <li><a href="#" data-toggle="modal" data-target="#modalGST">Update GST Rates</a></li>
+              <li><a href="#" data-toggle="modal" data-target="#modalPersonal">Update Personal Details</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+   <!-- Modals -->
+   <div class="modal fade" id="modalHSN" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit HSN </h4>
+        </div>
+        <div class="modal-body">
+          <app-client-details modalName= "hsn"></app-client-details>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalGST" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit GST Rates </h4>
+        </div>
+        <div class="modal-body">
+          <app-client-details modalName= "gst"></app-client-details>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalPersonal" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit Personal Details </h4>
+        </div>
+        <div class="modal-body">
+          <app-client-details modalName= "personal"></app-client-details>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+

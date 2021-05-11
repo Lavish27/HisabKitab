@@ -1,0 +1,49 @@
+
+<div *ngIf = "loader" >
+    <div  class="spinner" >
+    </div>
+</div>
+
+<div *ngIf = "!loader" class = "container">
+    <div class="col-sm-6 filter" *ngFor = "let filter of metadata.filters.content">
+        <label class="col-sm-4" [for]=filter.filterName>{{filter.filterName}}:</label>
+        <div *ngIf= "filter.filterType=='search'" class= "col-sm-8">
+        <app-typeahead-search [searchUrl]= "filter.links[0].href" (selectedItemsEvent)= "refreshTableData($event, filter.filterOptionsUriSuffix)"></app-typeahead-search>
+      </div>
+      <div *ngIf= "filter.filterType=='date-picker'" class= "col-sm-8">
+        <input type="date" class= "form-control dp" #from (change)= "refreshTableData(from.value, 'billdatefrom')"/>
+        <input type="date" class= "form-control dp" #to (change)= "refreshTableData(to.value, 'billdateto')"/>
+        </div>
+      </div>
+        
+</div>
+<hr/>
+
+<div *ngIf = "loader" >
+    <div  class="spinner" >
+    </div>
+</div>
+
+<div *ngIf = "!loader" class = "container">
+    <div class="table-responsive">
+        <table #saleTable class="table table-bordered table-hover">
+          <!--  <thead>
+                <tr>
+                  <th *ngFor = "let column of metadata.columns.content" class="info">{{column.columnName}}</th>
+                </tr>
+              </thead>
+              <div *ngIf = "screenerDataLoader" >
+                <div  class="spinner" >
+                </div>
+            </div>
+              <tbody *ngIf = "!screenerDataLoader">
+                  <tr *ngFor = "let row of screenerData"> 
+                      <td *ngFor = "let column of metadata.columns.content">
+                        {{row[column.columnMappingName]}}
+                      </td>
+                  </tr>
+              </tbody> -->
+            </table>
+    </div>
+
+</div>
